@@ -21,3 +21,5 @@ yarn.lock
 
 /ios
 android/build/intermediates/dex-cache/cache.xml
+package-lock.json
+

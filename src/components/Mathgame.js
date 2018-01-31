@@ -16,7 +16,7 @@ export default class Mathgame extends React.Component {
     const count = { done: 1, total: 20 };
     const level = props.level;
     const calculation = createCalculation(level);
-    const choices = createChoices(calculation.result, level);
+    const choices = createChoices(calculation, level);
     this.state = {
       level,
       count,
@@ -36,7 +36,7 @@ export default class Mathgame extends React.Component {
     this.setState((prevState, props) => {
       const addPoints = prevState.answer.isCorrect ? this.state.level * 10 : 0;
       const calculation = createCalculation(prevState.level);
-      const choices = createChoices(calculation.result, prevState.level);
+      const choices = createChoices(calculation, prevState.level);
 
       return {
         count: {
@@ -56,7 +56,7 @@ export default class Mathgame extends React.Component {
   handleRestart(value) {
     this.setState((prevState, props) => {
       const calculation = createCalculation(prevState.level);
-      const choices = createChoices(calculation.result, prevState.level);
+      const choices = createChoices(calculation, prevState.level);
 
       return {
         count: { done: 1, total: prevState.count.total },

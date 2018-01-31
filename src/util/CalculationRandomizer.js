@@ -19,13 +19,41 @@ export const createCalculation = level => {
       max = 100;
   }
 
-  const firstNumber = Math.floor(Math.random() * max) + min;
-  const secondNumber = Math.floor(Math.random() * max) + min;
-  const result = firstNumber + secondNumber;
+  const value = Math.floor(Math.random() * 4) + 1;
+  let operator = '+';
+  if (level > 1) {
+    switch (value) {
+      case 2:
+        operator = '-';
+        break;
+      case 3:
+        operator = '*';
+        break;
+      case 4:
+        operator = '/';
+        break;
+      default:
+        operator = '+';
+        break;
+    }
+  }
+
+  let firstNumber = Math.floor(Math.random() * max) + min;
+  const secondNumber = Math.floor(Math.random() * firstNumber) + min;
+
+  let result = firstNumber + secondNumber;
+  if (operator === '-') {
+    result = firstNumber - secondNumber;
+  } else if (operator === '*') {
+    result = firstNumber * secondNumber;
+  } else if (operator === '/') {
+    firstNumber = firstNumber * secondNumber;
+    result = firstNumber / secondNumber;
+  }
 
   let calculation = {
     firstNumber,
-    operation: '+',
+    operation: operator,
     secondNumber,
     result
   };
@@ -40,7 +68,8 @@ const shuffleArray = array => {
   return array;
 };
 
-const createChoisesArray = (result, choices, numOfChoices, level) => {
+const createChoisesArray = (calculation, choices, numOfChoices) => {
+  const result = calculation.result;
   if (choices.length === 0) {
     choices.push({ value: result, isCorrect: true });
   }
@@ -48,9 +77,24 @@ const createChoisesArray = (result, choices, numOfChoices, level) => {
     shuffleArray(choices);
     return;
   }
-  const random = Math.random() * level;
-  const value = Math.floor(random) + 1;
 
+  const addOrMinusMax = numOfChoices * 2; // 8
+  const random = Math.floor(Math.random() * addOrMinusMax) + 1; // 1 to 8
+  const doAdd = Math.round(Math.random()) === 1; // 0 or 1 -> boolean
+  const operator = calculation.operation;
+  const secondNumber = doAdd
+    ? calculation.secondNumber + random
+    : calculation.secondNumber - random;
+  const firstNumber = calculation.firstNumber;
+  let value = firstNumber + secondNumber;
+  if (operator === '-') {
+    value = firstNumber - secondNumber;
+  } else if (operator === '*') {
+    value = firstNumber * secondNumber;
+  } else if (operator === '/') {
+    value = firstNumber / secondNumber;
+  }
+  value = Math.round(value);
   if (
     choices.find(element => {
       return value === element.value;
@@ -58,21 +102,15 @@ const createChoisesArray = (result, choices, numOfChoices, level) => {
     value < 1 ||
     value === result
   ) {
-    createChoisesArray(result, choices, numOfChoices, level);
+    createChoisesArray(calculation, choices, numOfChoices);
   } else {
     choices.push({ value, isCorrect: false });
-    createChoisesArray(result, choices, numOfChoices, level);
+    createChoisesArray(calculation, choices, numOfChoices);
   }
 };
 
-export const createChoices = (result, level) => {
-  if (level > 100) {
-    level = level * 200;
-  } else {
-    level = level * 20;
-  }
-
+export const createChoices = (calculation, level) => {
   let choicesArr = [];
-  createChoisesArray(result, choicesArr, 4, level);
+  createChoisesArray(calculation, choicesArr, 4);
   return choicesArr;
 };
