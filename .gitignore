@@ -20,3 +20,4 @@ yarn.lock
 /android/app/build
 
 /ios
+android/build/intermediates/dex-cache/cache.xml

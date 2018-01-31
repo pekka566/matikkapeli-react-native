@@ -1,5 +1,3 @@
-// If level = 1 return numbers between 1 to 10.
-
 export const createCalculation = level => {
   let min;
   let max;
@@ -7,6 +5,14 @@ export const createCalculation = level => {
     case 1:
       min = 1;
       max = 10;
+      break;
+    case 2:
+      min = 1;
+      max = 20;
+      break;
+    case 999:
+      min = 0;
+      max = 99999;
       break;
     default:
       min = 0;
@@ -34,7 +40,7 @@ const shuffleArray = array => {
   return array;
 };
 
-const createChoisesArray = (result, choices, numOfChoices) => {
+const createChoisesArray = (result, choices, numOfChoices, level) => {
   if (choices.length === 0) {
     choices.push({ value: result, isCorrect: true });
   }
@@ -42,8 +48,9 @@ const createChoisesArray = (result, choices, numOfChoices) => {
     shuffleArray(choices);
     return;
   }
+  const random = Math.random() * level;
+  const value = Math.floor(random) + 1;
 
-  const value = Math.floor(Math.random() * 20) + 1;
   if (
     choices.find(element => {
       return value === element.value;
@@ -51,15 +58,21 @@ const createChoisesArray = (result, choices, numOfChoices) => {
     value < 1 ||
     value === result
   ) {
-    createChoisesArray(result, choices, numOfChoices);
+    createChoisesArray(result, choices, numOfChoices, level);
   } else {
     choices.push({ value, isCorrect: false });
-    createChoisesArray(result, choices, numOfChoices);
+    createChoisesArray(result, choices, numOfChoices, level);
   }
 };
 
-export const createChoices = result => {
+export const createChoices = (result, level) => {
+  if (level > 100) {
+    level = level * 200;
+  } else {
+    level = level * 20;
+  }
+
   let choicesArr = [];
-  createChoisesArray(result, choicesArr, 4);
+  createChoisesArray(result, choicesArr, 4, level);
   return choicesArr;
 };
