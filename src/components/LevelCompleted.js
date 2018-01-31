@@ -27,15 +27,15 @@ const LevelCompleted = props => {
       >
         <Image
           source={correctPercent > 20 ? goldStarImg : blueStarImg}
-          style={{ width: 40, height: 40 }}
+          style={styles.img}
         />
         <Image
           source={correctPercent > 50 ? goldStarImg : blueStarImg}
-          style={{ width: 40, height: 40 }}
+          style={styles.img}
         />
         <Image
           source={correctPercent > 80 ? goldStarImg : blueStarImg}
-          style={{ width: 40, height: 40 }}
+          style={styles.img}
         />
       </View>
       <View
@@ -48,6 +48,12 @@ const LevelCompleted = props => {
           value="Restart level"
           handlePress={value => {
             props.handleRestart(value);
+          }}
+        />
+        <Choice
+          value="Restart game"
+          handlePress={() => {
+            props.restartGame();
           }}
         />
       </View>
@@ -67,6 +73,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: '100%',
     borderWidth: 0
+  },
+  img: {
+    width: 40,
+    height: 40
   }
 });
 

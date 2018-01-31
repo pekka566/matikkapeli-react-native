@@ -102,6 +102,7 @@ export default class Mathgame extends React.Component {
             points={this.state.points}
             handleRestart={value => this.handleRestart(value)}
             maxPoints={this.state.count.total * this.state.level * 10}
+            restartGame={() => this.props.restartGame()}
           />
         ) : (
           <CalculationAndChoices
