@@ -1,6 +1,6 @@
 import React from 'react';
-import Mathgame from './components/Mathgame';
-import StartGame from './components/StartGame';
+import Mathgame from './src/components/Mathgame';
+import StartGame from './src/components/StartGame';
 
 export default class App extends React.Component {
   constructor() {

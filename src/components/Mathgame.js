@@ -59,7 +59,7 @@ export default class Mathgame extends React.Component {
       const choices = createChoices(calculation.result, prevState.level);
 
       return {
-        count: { done: 1, total: 20 },
+        count: { done: 1, total: prevState.count.total },
         points: 0,
         calculation,
         choices,
@@ -101,6 +101,7 @@ export default class Mathgame extends React.Component {
           <LevelCompleted
             points={this.state.points}
             handleRestart={value => this.handleRestart(value)}
+            maxPoints={this.state.count.total * this.state.level * 10}
           />
         ) : (
           <CalculationAndChoices
