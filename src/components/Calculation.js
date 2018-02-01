@@ -8,15 +8,14 @@ const Calculation = props => {
       flex: 0.1,
       justifyContent: 'center',
       alignItems: 'center',
-      marginLeft: '2%',
-      marginRight: '2%',
+      marginTop: '1%',
       flexDirection: 'row'
     },
     text: {
       textAlign: 'center',
       flex: 1,
       fontWeight: 'bold',
-      fontSize: 36,
+      fontSize: 30,
       textShadowOffset: { width: 1, height: 1 },
       color: props.answer
         ? props.answer.isCorrect ? 'green' : 'red'

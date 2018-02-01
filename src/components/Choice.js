@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center', // <-- the magic
     fontWeight: 'bold',
-    fontSize: 36,
+    fontSize: 30,
     color: '#fff',
     flex: 1,
     lineHeight: 100,

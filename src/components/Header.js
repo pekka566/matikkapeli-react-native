@@ -18,8 +18,9 @@ const Header = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.3,
-    width: '100%'
+    flex: 0.2,
+    width: '100%',
+    borderWidth: 0
   },
   view: {
     flex: 1,
@@ -28,12 +29,12 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 16,
     width: '100%'
   },
   textTitle: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     width: '100%'
   }

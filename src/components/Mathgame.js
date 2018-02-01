@@ -4,6 +4,7 @@ import Header from './Header';
 import CalculationAndChoices from './CalculationAndChoices';
 import Footer from './Footer';
 import LevelCompleted from './LevelCompleted';
+import ProgressBar from './ProgressBar';
 import SoundPlayer from '../util/SoundPlayer';
 import {
   createCalculation,
@@ -23,14 +24,38 @@ export default class Mathgame extends React.Component {
       points: 0,
       calculation,
       choices,
-      buttonsDisabled: false
+      buttonsDisabled: false,
+      progress: 0
     };
     this.handleAnswer = this.handleAnswer.bind(this);
     this.buttonsDisabledCallback = this.buttonsDisabledCallback.bind(this);
     this.handleRestart = this.handleRestart.bind(this);
+    this.handleTimeOut = this.handleTimeOut.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.animate();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  animate() {
+    let progress = 0;
+    this.setState({ progress });
+    let difficulties = this.props.level > 10 ? 2 : 1;
+    this.timer = setInterval(() => {
+      if (!this.state.buttonsDisabled) {
+        progress += 0.005; // 200 seconds
+        if (progress > 1) {
+          this.handleTimeOut();
+          progress = 0;
+        }
+        this.setState({ progress });
+      }
+    }, 1000 / difficulties);
+  }
 
   buttonsDisabledCallback() {
     this.setState((prevState, props) => {
@@ -53,6 +78,10 @@ export default class Mathgame extends React.Component {
     });
   }
 
+  handleTimeOut() {
+    this.setState({ final: true });
+  }
+
   handleRestart(value) {
     this.setState((prevState, props) => {
       const calculation = createCalculation(prevState.level);
@@ -65,7 +94,8 @@ export default class Mathgame extends React.Component {
         choices,
         answer: undefined,
         buttonsDisabled: false,
-        final: false
+        final: false,
+        progress: 0
       };
     });
   }
@@ -96,7 +126,7 @@ export default class Mathgame extends React.Component {
           count={this.state.count}
           points={this.state.points}
         />
-
+        {!this.state.final && <ProgressBar progress={this.state.progress} />}
         {this.state.final ? (
           <LevelCompleted
             points={this.state.points}
@@ -113,7 +143,6 @@ export default class Mathgame extends React.Component {
             handleAnswer={answer => this.handleAnswer(answer)}
           />
         )}
-        <Footer />
       </View>
     );
   }
@@ -125,6 +154,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'flex-start',
     justifyContent: 'space-around',
-    borderWidth: 1
+    borderWidth: 0
   }
 });
