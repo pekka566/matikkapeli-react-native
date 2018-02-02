@@ -23,6 +23,7 @@
     "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-globalize": "^1.2.3",
     "react-native-progress": "^3.4.0",
     "react-native-sound": "^0.10.4"
   }

@@ -1,16 +1,33 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { FormattedMessage } from 'react-native-globalize';
 
 const Header = props => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTitle}>Matikkapeli</Text>
+      <Text style={styles.textTitle}>
+        <FormattedMessage message="gamename" />
+      </Text>
       <View style={styles.view}>
         <Text style={styles.text}>
-          Level {props.level} - {props.timeUsed}/{props.maxTime} s.
+          <FormattedMessage message="Level" />
+          {' ' +
+            props.level +
+            '-  ' +
+            props.timeUsed +
+            '/' +
+            props.maxTime +
+            ' s.'}
         </Text>
         <Text style={styles.text}>
-          {props.count.done}/{props.count.total} points: {props.points} p.{' '}
+          <FormattedMessage message="Points" />
+          {': ' +
+            props.points +
+            ' - ' +
+            props.count.done +
+            '/' +
+            props.count.total +
+            '.'}
         </Text>
       </View>
     </View>
