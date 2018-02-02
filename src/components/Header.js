@@ -6,7 +6,9 @@ const Header = props => {
     <View style={styles.container}>
       <Text style={styles.textTitle}>Matikkapeli</Text>
       <View style={styles.view}>
-        <Text style={styles.text}>Level {props.level}</Text>
+        <Text style={styles.text}>
+          Level {props.level}. {props.timeUsed} s.
+        </Text>
         <Text style={styles.text}>
           {props.count.done} / {props.count.total}
         </Text>

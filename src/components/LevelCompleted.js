@@ -6,6 +6,8 @@ import blueStarImg from '../assets/blue_star_200.png';
 
 const LevelCompleted = props => {
   const correctPercent = props.points / props.maxPoints * 100;
+  const correctAnswers =
+    props.points / (props.maxPoints / props.numOfCalculations);
   return (
     <View style={styles.container}>
       <View
@@ -20,7 +22,10 @@ const LevelCompleted = props => {
           flex: 0.15
         }}
       >
-        <Text style={styles.text}>You got {props.points} points.</Text>
+        <Text style={styles.text}>
+          Correct answers {correctAnswers} / {props.numOfCalculations}. You got{' '}
+          {props.points} points. Time used {props.timeUsed} seconds.
+        </Text>
       </View>
       <View
         style={{ flexDirection: 'row', flex: 0.2, justifyContent: 'center' }}

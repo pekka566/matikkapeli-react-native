@@ -25,7 +25,9 @@ export default class Mathgame extends React.Component {
       calculation,
       choices,
       buttonsDisabled: false,
-      progress: 0
+      progress: 0,
+      secondsTotalUsed: 0,
+      pointsPerCalculation: level * 10
     };
     this.handleAnswer = this.handleAnswer.bind(this);
     this.buttonsDisabledCallback = this.buttonsDisabledCallback.bind(this);
@@ -43,23 +45,32 @@ export default class Mathgame extends React.Component {
 
   animate() {
     let progress = 0;
-    this.setState({ progress });
-    let difficulties = this.props.level > 10 ? 2 : 1;
+    const addToProgress = 0.005;
+    const difficulties = this.props.level > 10 ? 2 : 1;
+    const interval = 1000 / difficulties; // 1000 ms
+    const maxTime = interval / addToProgress;
+    this.setState({ progress, maxTime });
     this.timer = setInterval(() => {
-      if (!this.state.buttonsDisabled) {
-        progress += 0.005; // 200 seconds
+      if (!this.state.buttonsDisabled && !this.state.final) {
+        progress += addToProgress; // 200 seconds
+        let secondsTotalUsed = this.state.secondsTotalUsed + interval / 1000;
         if (progress > 1) {
           this.handleTimeOut();
           progress = 0;
         }
-        this.setState({ progress });
+        this.setState({
+          progress,
+          secondsTotalUsed
+        });
       }
-    }, 1000 / difficulties);
+    }, interval);
   }
 
   buttonsDisabledCallback() {
     this.setState((prevState, props) => {
-      const addPoints = prevState.answer.isCorrect ? this.state.level * 10 : 0;
+      const addPoints = prevState.answer.isCorrect
+        ? this.state.pointsPerCalculation
+        : 0;
       const calculation = createCalculation(prevState.level);
       const choices = createChoices(calculation, prevState.level);
 
@@ -95,7 +106,8 @@ export default class Mathgame extends React.Component {
         answer: undefined,
         buttonsDisabled: false,
         final: false,
-        progress: 0
+        progress: 0,
+        secondsTotalUsed: 0
       };
     });
   }
@@ -103,8 +115,8 @@ export default class Mathgame extends React.Component {
   handleAnswer(value) {
     const cor = this.state.choices.filter(choice => choice.isCorrect === true);
     const isCorrect = value === cor[0].value;
-
-    this.setState(() => {
+    const timePerCalculation = this.state.maxTime / this.state.count.total;
+    this.setState((prevState, props) => {
       return {
         buttonsDisabled: true,
         answer: { value, isCorrect }
@@ -125,6 +137,7 @@ export default class Mathgame extends React.Component {
           level={this.state.level}
           count={this.state.count}
           points={this.state.points}
+          timeUsed={this.state.secondsTotalUsed}
         />
         {!this.state.final && <ProgressBar progress={this.state.progress} />}
         {this.state.final ? (
@@ -133,6 +146,10 @@ export default class Mathgame extends React.Component {
             handleRestart={value => this.handleRestart(value)}
             maxPoints={this.state.count.total * this.state.level * 10}
             restartGame={() => this.props.restartGame()}
+            maxTime={this.state.maxTime}
+            timeUsed={this.state.secondsTotalUsed}
+            pointsPerCalculation={this.state.pointsPerCalculation}
+            numOfCalculations={this.state.count.total}
           />
         ) : (
           <CalculationAndChoices
