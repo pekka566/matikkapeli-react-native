@@ -48,7 +48,7 @@ export default class Mathgame extends React.Component {
     const addToProgress = 0.005;
     const difficulties = this.props.level > 10 ? 2 : 1;
     const interval = 1000 / difficulties; // 1000 ms
-    const maxTime = interval / addToProgress;
+    const maxTime = interval / addToProgress / 1000;
     this.setState({ progress, maxTime });
     this.timer = setInterval(() => {
       if (!this.state.buttonsDisabled && !this.state.final) {
@@ -137,7 +137,8 @@ export default class Mathgame extends React.Component {
           level={this.state.level}
           count={this.state.count}
           points={this.state.points}
-          timeUsed={this.state.secondsTotalUsed}
+          timeUsed={Math.trunc(this.state.secondsTotalUsed)}
+          maxTime={this.state.maxTime}
         />
         {!this.state.final && <ProgressBar progress={this.state.progress} />}
         {this.state.final ? (

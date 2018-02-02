@@ -7,12 +7,11 @@ const Header = props => {
       <Text style={styles.textTitle}>Matikkapeli</Text>
       <View style={styles.view}>
         <Text style={styles.text}>
-          Level {props.level}. {props.timeUsed} s.
+          Level {props.level} - {props.timeUsed}/{props.maxTime} s.
         </Text>
         <Text style={styles.text}>
-          {props.count.done} / {props.count.total}
+          {props.count.done}/{props.count.total} points: {props.points} p.{' '}
         </Text>
-        <Text style={styles.text}>points: {props.points} p. </Text>
       </View>
     </View>
   );
