@@ -12,7 +12,7 @@ class StartGame extends Component {
     const msgFormatterHard = this.context.globalize.getMessageFormatter('hard');
     return (
       <View style={styles.container}>
-        <View style={{ flex: 0.6, justifyContent: 'space-around' }}>
+        <View style={{ flex: 0.8, justifyContent: 'space-around' }}>
           <Text style={styles.text}>
             <FormattedMessage message="Select_level" />
           </Text>
