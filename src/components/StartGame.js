@@ -29,6 +29,12 @@ class StartGame extends Component {
             }}
           />
           <Choice
+            value={msgFormatterLevel() + ' 3'}
+            handlePress={value => {
+              this.props.selectLevel(3);
+            }}
+          />
+          <Choice
             value={msgFormatterLevel() + ' ' + msgFormatterHard()}
             handlePress={value => {
               this.props.selectLevel(999);
