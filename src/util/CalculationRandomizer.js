@@ -12,7 +12,7 @@ export const createCalculation = level => {
       break;
     case 3:
       min = 1;
-      max = 10;
+      max = 20;
       break;
     case 999:
       min = 0;
@@ -49,8 +49,15 @@ export const createCalculation = level => {
       break;
   }
 
-  let firstNumber = Math.floor(Math.random() * max) + min;
-  let secondNumber = Math.floor(Math.random() * max) + min;
+  let firstNumber =
+    operator === '+' || operator === '-'
+      ? Math.floor(Math.random() * max) + min
+      : Math.floor(Math.random() * max / 2) + min;
+  let secondNumber =
+    operator === '+' || operator === '-'
+      ? Math.floor(Math.random() * max) + min
+      : Math.floor(Math.random() * max / 2) + min;
+
   let result = firstNumber + secondNumber;
   if (operator === '-') {
     if (firstNumber < secondNumber) {
@@ -96,22 +103,7 @@ const createChoisesArray = (calculation, choices, numOfChoices, level) => {
   const addOrMinusMax = numOfChoices * 2; // 8
   const random = Math.floor(Math.random() * addOrMinusMax) + 1; // 1 to 8
   const doAdd = Math.round(Math.random()) === 1; // 0 or 1 -> boolean
-  const operator = calculation.operation;
-  const secondNumber = doAdd
-    ? calculation.secondNumber + random
-    : calculation.secondNumber - random;
-  let firstNumber = calculation.firstNumber;
-  let value = firstNumber + secondNumber;
-  if (operator === '-') {
-    value = firstNumber - secondNumber;
-  } else if (operator === '*') {
-    value = firstNumber * secondNumber;
-  } else if (operator === '/') {
-    value = doAdd
-      ? firstNumber / calculation.secondNumber + random * secondNumber
-      : firstNumber / calculation.secondNumber - random * secondNumber;
-  }
-
+  let value = doAdd ? result + random : result - random;
   value = Math.round(value);
   if (
     choices.find(element => {
