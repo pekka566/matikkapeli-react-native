@@ -1,7 +1,7 @@
 import {
   createChoices,
   createCalculation
-} from './src/util/CalculationRandomizer';
+} from '../src/util/CalculationRandomizer';
 
 it('random choices', () => {
   let calculation = {

@@ -4,7 +4,11 @@
   "private": true,
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
     "jest-expo": "25.0.0",
+    "react-dom": "^16.2.0",
     "react-native-debugger-open": "^0.3.15",
     "react-test-renderer": "16.2.0"
   },
@@ -16,7 +20,16 @@
     "postinstall": "rndebugger-open --expo"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native",
+    "testMatch": [
+      "**/?(*.)test.js?(x)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ]
   },
   "dependencies": {
     "apsl-react-native-button": "^3.1.0",

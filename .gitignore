@@ -23,3 +23,7 @@ yarn.lock
 android/build/intermediates/dex-cache/cache.xml
 package-lock.json
 
+android/.gradle/2.14.1/tasks/*.lock
+android/.gradle/2.14.1/tasks/*.bin
+android/.gradle/2.14.1/taskArtifacts/*.bin
+android/.gradle/2.14.1/taskArtifacts/*.lock
