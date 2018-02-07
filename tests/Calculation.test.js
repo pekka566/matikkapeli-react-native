@@ -24,9 +24,15 @@ describe('<Calculation>', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('has calculation prop correctly', () => {
+    it('renders calculation prop correctly', () => {
       const wrapper = shallow(Component);
       wrapper.setProps({ calculation: calculation2 });
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('renders props correctly', () => {
+      const wrapper = shallow(Component);
+      wrapper.setProps({ calculation: calculation2, answer: { value: 444 } });
       expect(wrapper).toMatchSnapshot();
     });
   });

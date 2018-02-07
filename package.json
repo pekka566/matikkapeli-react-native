@@ -21,14 +21,11 @@
   },
   "jest": {
     "preset": "react-native",
-    "testMatch": [
-      "**/?(*.)test.js?(x)"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "<rootDir>/jest/setup.js"
+    "testMatch": ["**/?(*.)test.js?(x)"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": ["<rootDir>/jest/setup.js"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|apsl-react-native-button)/"
     ]
   },
   "dependencies": {

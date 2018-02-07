@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Calculation> Structure has calculation prop correctly 1`] = `
+exports[`<Calculation> Structure renders calculation prop correctly 1`] = `
 <View
   style={
     Object {
@@ -70,6 +70,44 @@ exports[`<Calculation> Structure renders correctly 1`] = `
     5 
     +
      6 = 
+  </Text>
+</View>
+`;
+
+exports[`<Calculation> Structure renders props correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 0.1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginTop": "1%",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "red",
+        "flex": 1,
+        "fontSize": 30,
+        "fontWeight": "bold",
+        "textAlign": "center",
+        "textShadowOffset": Object {
+          "height": 1,
+          "width": 1,
+        },
+      }
+    }
+  >
+    15 
+    +
+     16 = 
+    444
   </Text>
 </View>
 `;

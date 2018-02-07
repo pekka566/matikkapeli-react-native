@@ -19,6 +19,12 @@ const Choice = props => (
   </View>
 );
 
+Choice.propTypes = {
+  handlePress: PropTypes.func.isRequired,
+  value: PropTypes.any.isRequired,
+  buttonDisabled: PropTypes.bool
+};
+
 Choice.defaultProps = {
   buttonDisabled: false
 };

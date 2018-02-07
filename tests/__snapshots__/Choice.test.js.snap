@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "marginLeft": "2%",
+      "marginRight": "2%",
+    }
+  }
+>
+  <Button
+    isDisabled={false}
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#9b59b6",
+        "borderColor": "#333",
+        "borderRadius": 10,
+        "borderWidth": 3,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#fff",
+            "flex": 1,
+            "fontSize": 30,
+            "fontWeight": "bold",
+            "lineHeight": 100,
+            "textAlign": "center",
+            "textShadowOffset": Object {
+              "height": 5,
+              "width": 5,
+            },
+            "textShadowRadius": 6,
+          }
+        }
+      >
+        Press mee!
+      </Text>
+    </View>
+  </Button>
+</View>
+`;
