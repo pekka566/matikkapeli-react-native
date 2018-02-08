@@ -29,9 +29,14 @@ const Choices = props => {
   );
 };
 
+Choices.defaultProps = {
+  buttonsDisabled: false
+};
+
 Choices.prototypes = {
   choices: PropTypes.array.isRequired,
-  handleAnswer: PropTypes.func.isRequired
+  handleAnswer: PropTypes.func.isRequired,
+  buttonsDisabled: PropTypes.bool
 };
 
 export default Choices;

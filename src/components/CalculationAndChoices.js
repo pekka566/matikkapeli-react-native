@@ -31,12 +31,16 @@ const CalculationAndChoices = props => {
   );
 };
 
+CalculationAndChoices.defaultProps = {
+  buttonsDisabled: false
+};
+
 CalculationAndChoices.propTypes = {
   calculation: PropTypes.object.isRequired,
   answer: PropTypes.object,
   choices: PropTypes.array.isRequired,
   handleAnswer: PropTypes.func.isRequired,
-  buttonsDisabled: PropTypes.bool.isRequired
+  buttonsDisabled: PropTypes.bool
 };
 
 export default CalculationAndChoices;

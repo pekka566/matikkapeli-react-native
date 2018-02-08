@@ -27,7 +27,8 @@ export default class Mathgame extends React.Component {
       buttonsDisabled: false,
       progress: 0,
       secondsTotalUsed: 0,
-      pointsPerCalculation: level * 10
+      pointsPerCalculation: level * 10,
+      maxTime: 0
     };
     this.handleAnswer = this.handleAnswer.bind(this);
     this.buttonsDisabledCallback = this.buttonsDisabledCallback.bind(this);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 import { FormattedMessage } from 'react-native-globalize';
 
@@ -32,6 +33,14 @@ const Header = props => {
       </View>
     </View>
   );
+};
+
+Header.propTypes = {
+  level: PropTypes.number.isRequired,
+  timeUsed: PropTypes.number.isRequired,
+  maxTime: PropTypes.number.isRequired,
+  points: PropTypes.number.isRequired,
+  count: PropTypes.object.isRequired
 };
 
 const styles = StyleSheet.create({
