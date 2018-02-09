@@ -24,3 +24,5 @@ android/build/intermediates/dex-cache/cache.xml
 package-lock.json
 
 android/.gradle/2.14.1
+/android/.gradle/2.14.1/taskArtifacts/fileHashes.bin
+/android/gradle.properties
