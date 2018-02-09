@@ -8,7 +8,9 @@ const Footer = () => {
         width: '100%',
         alignItems: 'center',
         alignSelf: 'flex-end',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        borderWidth: 0,
+        flex: 0.2
       }}
     >
       <Text>Done with React Native.</Text>

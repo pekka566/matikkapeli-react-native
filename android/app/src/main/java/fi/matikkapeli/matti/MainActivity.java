@@ -1,4 +1,4 @@
-package com.mathgame;
+package fi.matikkapeli.matti;
 
 import com.facebook.react.ReactActivity;
 

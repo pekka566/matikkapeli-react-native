@@ -13,7 +13,7 @@ export const Messages = {
     Restart_game: 'Restart game'
   },
   fi: {
-    gamename: 'Matikkapeli',
+    gamename: 'Matikkapeli Matti',
     Level: 'Taso',
     Select_level: 'Valitse taso',
     hard: 'vaikea',

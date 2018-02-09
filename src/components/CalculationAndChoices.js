@@ -20,9 +20,9 @@ const CalculationAndChoices = props => {
   return (
     <View
       style={{
-        flex: 1,
+        flex: 0.7,
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'flex-start'
       }}
     >
       {calculation}

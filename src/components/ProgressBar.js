@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     flex: 0.1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
+    borderWidth: 0
   },
   progress: {
     margin: 10

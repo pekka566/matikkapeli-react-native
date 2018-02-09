@@ -14,7 +14,7 @@ const Header = props => {
           <FormattedMessage message="Level" />
           {' ' +
             props.level +
-            '-  ' +
+            ' -  ' +
             props.timeUsed +
             '/' +
             props.maxTime +
@@ -45,14 +45,15 @@ Header.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.2,
+    flex: 0.15,
     width: '100%',
     borderWidth: 0
   },
   view: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    padding: '2%'
   },
   text: {
     textAlign: 'center',
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     width: '100%'
   }

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { FormattedMessage } from 'react-native-globalize';
 import { PropTypes } from 'react-native-globalize';
 import Choice from './Choice';
+import Header from './Header';
+import Footer from './Footer';
 
 class StartGame extends Component {
   render() {
@@ -12,6 +14,13 @@ class StartGame extends Component {
     const msgFormatterHard = this.context.globalize.getMessageFormatter('hard');
     return (
       <View style={styles.container}>
+        <Header
+          level={0}
+          count={{ done: 0, total: 20 }}
+          points={0}
+          timeUsed={0}
+          maxTime={200}
+        />
         <View style={{ flex: 0.8, justifyContent: 'space-around' }}>
           <Text style={styles.text}>
             <FormattedMessage message="Select_level" />
@@ -41,6 +50,7 @@ class StartGame extends Component {
             }}
           />
         </View>
+        <Footer />
       </View>
     );
   }
@@ -57,7 +67,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 48,
     width: '100%',
-    borderWidth: 0
+    borderWidth: 0,
+    margin: 0,
+    padding: 0
   }
 });
 

@@ -66,8 +66,8 @@ class LevelCompleted extends Component {
         </View>
         <View
           style={{
-            flex: 0.6,
-            justifyContent: 'flex-end'
+            flex: 0.3,
+            justifyContent: 'space-around'
           }}
         >
           <Choice

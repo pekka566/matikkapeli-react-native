@@ -6,6 +6,8 @@ exports[`renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "alignSelf": "flex-end",
+      "borderWidth": 0,
+      "flex": 0.2,
       "justifyContent": "flex-end",
       "width": "100%",
     }

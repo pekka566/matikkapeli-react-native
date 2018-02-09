@@ -14,7 +14,7 @@ import {
 export default class Mathgame extends React.Component {
   constructor(props) {
     super(props);
-    const count = { done: 1, total: 20 };
+    const count = { done: 0, total: 20 };
     const level = props.level;
     const calculation = createCalculation(level);
     const choices = createChoices(calculation, level);
@@ -162,6 +162,7 @@ export default class Mathgame extends React.Component {
             handleAnswer={answer => this.handleAnswer(answer)}
           />
         )}
+        <Footer />
       </View>
     );
   }

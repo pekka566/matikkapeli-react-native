@@ -4,9 +4,9 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "flex": 1,
+      "flex": 0.7,
       "flexDirection": "column",
-      "justifyContent": "space-around",
+      "justifyContent": "flex-start",
     }
   }
 >
